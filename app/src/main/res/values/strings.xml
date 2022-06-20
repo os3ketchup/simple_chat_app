@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">MyChat App</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="logo_app">logo_app</string>
+    <string name="_901234567">998901234567</string>
+    <string name="plus">+</string>
+    <string name="next">Next</string>
+    <string name="_123456">123456</string>
+    <string name="submit">Submit</string>
+    <string name="phone_number">phone number</string>
+    <string name="code_received_in">CODE RECEIVED IN</string>
+    <string name="simple_chat">Simple chat</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="adding">Adding</string>
+    <string name="remove_photo">remove photo</string>
+    <string name="confirm">confirm</string>
+</resources>

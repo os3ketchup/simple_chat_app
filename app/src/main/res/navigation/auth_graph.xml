@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/auth_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="uz.os3ketchup.mychatapp.fragments.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/verifyFragment"
+        android:name="uz.os3ketchup.mychatapp.fragments.VerifyFragment"
+        android:label="fragment_verify"
+        tools:layout="@layout/fragment_verify" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="uz.os3ketchup.mychatapp.fragments.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+</navigation>

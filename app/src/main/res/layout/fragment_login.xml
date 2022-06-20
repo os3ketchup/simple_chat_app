@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.LoginFragment">
+
+    <ImageView
+        android:importantForAccessibility="no"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="@dimen/_150sdp"
+        android:src="@drawable/smartphone"
+        />
+
+    <androidx.cardview.widget.CardView
+        android:layout_margin="@dimen/_32sdp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        app:cardCornerRadius="@dimen/_8sdp"
+        android:elevation="@dimen/_4sdp">
+        <LinearLayout
+            android:background="#e9ecef"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_marginStart="@dimen/_24sdp"
+                android:gravity="center"
+                android:fontFamily="@font/gothic_a1_medium"
+                android:textColor="#212529"
+                android:background="#e9ecef"
+                android:textSize="@dimen/_24ssp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/plus"/>
+            <EditText
+                android:id="@+id/et_number"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="#e9ecef"
+                android:ems="13"
+                android:textColor="#1b4332"
+                android:textColorHint="#ced4da"
+                android:textSize="@dimen/_24ssp"
+                android:fontFamily="@font/gothic_a1_medium"
+                android:hint="@string/_901234567"
+                android:inputType="number"
+                android:maxLength="13"
+                android:maxLines="1"
+                android:autofillHints="999999999" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/btn_next"
+        app:cardCornerRadius="@dimen/_8sdp"
+        app:cardElevation="@dimen/_4sdp"
+        android:backgroundTint="#3a5a40"
+        android:clickable="true"
+        android:paddingTop="@dimen/_4sdp"
+        android:layout_margin="@dimen/_32sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="@dimen/_2sdp"
+            android:paddingBottom="@dimen/_2sdp"
+            android:text="@string/next"
+            android:textColor="#dad7cd"
+            android:textSize="@dimen/_24ssp"
+            android:gravity="center"/>
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>
