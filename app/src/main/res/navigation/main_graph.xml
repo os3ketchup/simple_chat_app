@@ -20,4 +20,19 @@
         android:name="uz.os3ketchup.mychatapp.fragments.ChatMessageFragment"
         android:label="fragment_chat_message"
         tools:layout="@layout/fragment_chat_message" />
+    <fragment
+        android:id="@+id/groupMessageFragment"
+        android:name="uz.os3ketchup.mychatapp.fragments.GroupMessageFragment"
+        android:label="fragment_group_message"
+        tools:layout="@layout/fragment_group_message" />
+    <fragment
+        android:id="@+id/editGroupFragment"
+        android:name="uz.os3ketchup.mychatapp.fragments.EditGroupFragment"
+        android:label="fragment_edit_group"
+        tools:layout="@layout/fragment_edit_group" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="uz.os3ketchup.mychatapp.fragments.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" />
 </navigation>

@@ -1,5 +1,6 @@
 package uz.os3ketchup.mychatapp
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -29,16 +30,27 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.topAppBar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.searchFragment -> {
+                    findNavController(R.id.nav_host_fragment_content_main).navigate(R.id.searchFragment)
+                    true
+                }
+                else -> {
+                    false
+                }
+            }
+        }
         val viewModel = ViewModelProvider(this)[MainViewModel::class.java]
-        viewModel.condition.observe(this){
-            when(it){
-                "settings"->{
+        viewModel.condition.observe(this) {
+            when (it) {
+                "settings" -> {
                     binding.appBar.visibility = View.GONE
                 }
-                "home"->{
+                "home" -> {
                     binding.appBar.visibility = View.VISIBLE
                 }
             }
@@ -47,7 +59,6 @@ class MainActivity : AppCompatActivity() {
         setLayout()
 
     }
-
 
 
     private fun setLayout() {
@@ -65,17 +76,19 @@ class MainActivity : AppCompatActivity() {
         mAuth = Firebase.auth
         val uid = mAuth.currentUser?.uid
         databaseRef.addValueEventListener(object : ValueEventListener {
+            @SuppressLint("SetTextI18n")
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (child in snapshot.children) {
                     val user = child.getValue(User::class.java)
                     if (uid == user?.UID) {
-                        tvName.text = user?.fullName
+                        tvName.text = user?.firstName + " " + user?.lastName
                         tvNumber.text = user?.phoneNumber
-                        if (user?.imageLink!!.isNotEmpty()) {
+                        Glide.with(this@MainActivity).load(user?.imageLink).into(imageHeader)
+                        /*if (user?.imageLink!!.isNotEmpty()) {
                             Glide.with(this@MainActivity).load(user.imageLink).into(imageHeader)
                         } else {
                             Toast.makeText(this@MainActivity, "empty", Toast.LENGTH_SHORT).show()
-                        }
+                        }*/
                     }
                 }
             }
@@ -95,45 +108,21 @@ class MainActivity : AppCompatActivity() {
                     binding.drawerLayout.close()
                 }
                 R.id.log_out -> {
-                     mAuth.signOut()
-                 if (mAuth.currentUser == null) {
-                     startActivity(Intent(this, LoginActivity::class.java))
-                     finish() // destroy login so user can't come back with back button
-                 }
-            }
-        }
-
-        menuItem.isChecked = true
-       /* binding.drawerLayout.close()*/
-        true
-    }
-
-
-    }
-
-
-   /* private fun setViewPager() {
-        val fragmentAdapter = FragmentAdapter(this, this)
-        binding.rvAdapter.adapter = fragmentAdapter
-        TabLayoutMediator(binding.tabLayout, binding.rvAdapter) { tab, index ->
-            run {
-                when (index) {
-                    0 -> {
-                        *//*tab.icon = ContextCompat.getDrawable(this, R.drawable.ic_person)*//*
-                        tab.text = "Chats"
-                    }
-                    1 -> {
-                        *//*tab.icon = ContextCompat.getDrawable(this, R.drawable.ic_groups)*//*
-                        tab.text = "Groups"
-                    }
-                    else -> {
-                        throw Resources.NotFoundException("Fragment error ${System.currentTimeMillis()}")
+                    mAuth.signOut()
+                    if (mAuth.currentUser == null) {
+                        startActivity(Intent(this, LoginActivity::class.java))
+                        finish() // destroy login so user can't come back with back button
                     }
                 }
             }
-        }.attach()
-    }*/
 
+            menuItem.isChecked = true
+            /* binding.drawerLayout.close()*/
+            true
+        }
+
+
+    }
 
 
 }

@@ -2,12 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="?actionBarSize"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:layout_margin="@dimen/_8sdp"
     android:gravity="center"
     android:background="@color/white"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
 
     <com.google.android.material.imageview.ShapeableImageView
@@ -20,20 +20,10 @@
         android:scaleType="centerCrop"
         app:shapeAppearance="@style/circular" />
 
-    <TextView
-        android:id="@+id/tv_item_user"
-        android:layout_weight="1"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:gravity="end|center"
-        android:paddingStart="@dimen/_16sdp"
-        android:paddingEnd="@dimen/_16sdp"
-        android:textColor="@color/black"
-        android:textSize="@dimen/_24ssp"
-        tools:text="user" />
-    <ImageView
-        android:id="@+id/btn_menu"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:src="@drawable/ic_more"/>
+   <TextView
+       android:id="@+id/tv_user"
+       android:textSize="@dimen/_12ssp"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="@string/app_name"/>
 </LinearLayout>

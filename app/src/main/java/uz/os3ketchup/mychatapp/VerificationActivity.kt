@@ -42,10 +42,7 @@ class VerificationActivity : AppCompatActivity() {
                 }
             }
         }
-
-
     }
-
     private fun sendCode() {
         val options = PhoneAuthOptions.newBuilder(mAuth)
             .setPhoneNumber(phoneNumber)
@@ -55,8 +52,6 @@ class VerificationActivity : AppCompatActivity() {
             .build()
         PhoneAuthProvider.verifyPhoneNumber(options)
     }
-
-
     override fun onRestart() {
         super.onRestart()
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN

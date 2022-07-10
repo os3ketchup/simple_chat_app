@@ -16,4 +16,7 @@
     <string name="adding">Adding</string>
     <string name="remove_photo">remove photo</string>
     <string name="confirm">confirm</string>
+    <string name="group_name">Group name</string>
+    <string name="search">Search</string>
+
 </resources>

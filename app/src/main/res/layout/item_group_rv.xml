@@ -15,8 +15,8 @@
         android:layout_width="@dimen/_40sdp"
         android:layout_height="@dimen/_40sdp"
         android:layout_margin="@dimen/_8sdp"
-        android:background="@drawable/user_add"
-        android:src="@drawable/user_add"
+        android:background="@drawable/phot"
+
         android:scaleType="centerCrop"
         app:shapeAppearance="@style/circular" />
 

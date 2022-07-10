@@ -20,7 +20,7 @@
         android:fontFamily="@font/cinzel_decorative"
         android:paddingTop="@dimen/_32sdp"
         android:text="@string/code_received_in"
-        android:textColor="#1b4332"
+        android:textColor="@color/dark_military"
         android:textSize="@dimen/_18ssp" />
     <TextView
         android:id="@+id/tv_phone_number"
@@ -51,7 +51,7 @@
                 android:background="#e9ecef"
                 android:ems="6"
                 android:gravity="center"
-                android:textColor="#1b4332"
+                android:textColor="@color/dark_military"
                 android:textColorHint="#ced4da"
                 android:textSize="@dimen/_24ssp"
                 android:fontFamily="@font/gothic_a1_medium"
@@ -68,7 +68,7 @@
         android:id="@+id/btn_submit"
         app:cardCornerRadius="@dimen/_8sdp"
         app:cardElevation="@dimen/_4sdp"
-        android:backgroundTint="#3a5a40"
+        android:backgroundTint="@color/medium_military"
         android:clickable="true"
         android:paddingTop="@dimen/_4sdp"
         android:layout_margin="@dimen/_32sdp"

@@ -8,12 +8,6 @@
     android:orientation="vertical"
     tools:context=".fragments.ProfileFragment">
 
-   <!-- <ImageView
-        android:layout_width="@dimen/_150sdp"
-        android:layout_height="@dimen/_150sdp"
-        android:importantForAccessibility="no"
-        android:src="@drawable/user_add" />-->
-
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp"
@@ -41,7 +35,7 @@
                 android:inputType="text"
                 android:maxLength="12"
                 android:maxLines="1"
-                android:textColor="#1b4332"
+                android:textColor="@color/dark_military"
                 android:textColorHint="#ced4da"
                 android:textSize="@dimen/_24ssp" />
         </LinearLayout>
@@ -73,7 +67,7 @@
                 android:inputType="text"
                 android:maxLength="12"
                 android:maxLines="1"
-                android:textColor="#1b4332"
+                android:textColor="@color/dark_military"
                 android:textColorHint="#ced4da"
                 android:textSize="@dimen/_24ssp" />
         </LinearLayout>
@@ -84,7 +78,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/_32sdp"
-        android:backgroundTint="#3a5a40"
+        android:backgroundTint="@color/medium_military"
         android:clickable="true"
         android:focusable="true"
         android:paddingTop="@dimen/_4sdp"

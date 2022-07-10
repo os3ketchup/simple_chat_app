@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    android:background="#4c956c"
+    android:background="@color/dark_military"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 <com.google.android.material.imageview.ShapeableImageView
@@ -12,10 +12,10 @@
     android:layout_margin="@dimen/_16sdp"
     android:layout_width="@dimen/_100sdp"
     android:layout_height="@dimen/_100sdp"
-    android:scaleType="fitCenter"
+    android:scaleType="centerCrop"
     app:strokeWidth="@dimen/_1sdp"
+    android:background="@drawable/user_add"
     app:strokeColor="@color/white"
-    android:src="@drawable/user_add"
     />
     <TextView
         android:id="@+id/tv_header_name"

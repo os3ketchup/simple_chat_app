@@ -26,6 +26,7 @@ import uz.os3ketchup.mychatapp.moduls.Constants.USER
 import uz.os3ketchup.mychatapp.moduls.MainViewModel
 import uz.os3ketchup.mychatapp.moduls.User
 import java.io.IOException
+import java.lang.IllegalStateException
 
 const val REQUEST_CODE = 1
 
@@ -33,10 +34,10 @@ const val REQUEST_CODE = 1
 class SettingsFragment : Fragment() {
     lateinit var binding: FragmentSettingsBinding
     private lateinit var viewModel: MainViewModel
-    lateinit var lastName: String
+
     lateinit var fileUri: Uri
     lateinit var currentUID: String
-     private var imageLink:String = ""
+    private var imageLink: String = ""
     lateinit var user: User
     private lateinit var firebaseDatabase: FirebaseDatabase
     private lateinit var databaseReference: DatabaseReference
@@ -65,29 +66,46 @@ class SettingsFragment : Fragment() {
         handlePhoto()
         confirmChanges()
     }
+
     private fun confirmChanges() {
-        binding.topAppBar.setOnMenuItemClickListener {
-            menuItem->
-            when(menuItem.itemId){
-                R.id.item_check->{
-                    val fullName =
-                        binding.etFirstName.text.toString()
-                            .trim() + " " + binding.etLastName.text.toString().trim()
-                    user = if (imageLink.isNotEmpty()){
-                        User(UID = currentUID, fullName = fullName, phoneNumber = mAuth.currentUser?.phoneNumber!!, imageLink = imageLink)
+        binding.topAppBar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.item_check -> {
+                    if (binding.etFirstName.text.isNotEmpty()){
+                        user = if (imageLink.isNotEmpty()) {
+                            User(
+                                UID = currentUID,
+                                phoneNumber = mAuth.currentUser?.phoneNumber!!,
+                                imageLink = imageLink,
+                                firstName = binding.etFirstName.text.toString(),
+                                lastName = binding.etLastName.text.toString()
+                            )
+                        } else {
+                            User(
+                                UID = currentUID,
+                                phoneNumber = mAuth.currentUser?.phoneNumber!!,
+                                firstName = binding.etFirstName. text.toString(),
+                                lastName = binding.etLastName.text.toString()
+                            )
+                        }
+                        databaseReference.child(mAuth.uid!!).setValue(user)
+                        findNavController().navigate(R.id.homeFragment)
                     }else{
-                        User(UID = currentUID, fullName = fullName, phoneNumber = mAuth.currentUser?.phoneNumber!!)
+                        Toast.makeText(context, "First name shouldn't be empty!", Toast.LENGTH_SHORT).show()
                     }
-                    databaseReference.child(mAuth.uid!!).setValue(user)
-                    findNavController().navigate(R.id.homeFragment)
+
+
+
 
                     true
                 }
-                R.id.item_photo_remove->{
+                R.id.item_photo_remove -> {
+                   imageLink = ""
+                    binding.ivProfile.setImageResource(R.drawable.user_add)
 
                     true
                 }
-                else->{
+                else -> {
                     false
                 }
 
@@ -123,19 +141,21 @@ class SettingsFragment : Fragment() {
                     if (user != null) {
                         if (user.UID == currentUID) {
                             imageLink = user.imageLink
-                            val fullNameDivider = user.fullName.split(" ")
-                            val firstName = fullNameDivider[0]
-                            if (fullNameDivider[1].isNotEmpty()) {
-                                lastName = fullNameDivider[1]
-                                binding.etLastName.setText(lastName)
+                            binding.etFirstName.setText(user.firstName)
+                            binding.etLastName.setText(user.lastName)
+                            try {
+                                Glide.with(requireActivity()).load(user.imageLink)
+                                    .into(binding.ivProfile)
+                            }catch (e:IllegalStateException){
+                                e.printStackTrace()
                             }
-                            binding.etFirstName.setText(firstName)
-                            Glide.with(requireActivity()).load(user.imageLink).into(binding.ivProfile)
+
 
                         }
                     }
                 }
             }
+
             override fun onCancelled(error: DatabaseError) {
                 error.message
             }
@@ -157,6 +177,7 @@ class SettingsFragment : Fragment() {
                 val bitmap =
                     MediaStore.Images.Media.getBitmap(requireActivity().contentResolver, fileUri)
                 binding.ivProfile.setImageBitmap(bitmap)
+                Glide.with(requireActivity()).load(fileUri).into(binding.ivProfile)
             } catch (e: IOException) {
                 e.printStackTrace()
             }
@@ -174,22 +195,24 @@ class SettingsFragment : Fragment() {
 
         storageReference.putFile(fileUri).addOnSuccessListener {
             progressDialog.dismiss()
-            Toast.makeText(requireContext(), "Image successfully uploaded", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Image successfully uploaded", Toast.LENGTH_SHORT)
+                .show()
             val downloadUrl = it.metadata?.reference?.downloadUrl
-            downloadUrl?.addOnSuccessListener {imageUri->
-               imageLink = imageUri.toString()
+            downloadUrl?.addOnSuccessListener { imageUri ->
+                imageLink = imageUri.toString()
                 Toast.makeText(requireContext(), "$imageUri", Toast.LENGTH_SHORT).show()
             }
-        }.addOnFailureListener{
+        }.addOnFailureListener {
             progressDialog.dismiss()
             Toast.makeText(requireContext(), "Failed", Toast.LENGTH_SHORT).show()
         }.addOnProgressListener {
             val progress = (100.0 * it.bytesTransferred / it.totalByteCount)
             progressDialog.setMessage("Uploaded " + progress.toInt() + "%")
         }.addOnCompleteListener {
-            if (it.isSuccessful){
-                Toast.makeText(requireContext(), "Successfully completed", Toast.LENGTH_SHORT).show()
-            }else{
+            if (it.isSuccessful) {
+                Toast.makeText(requireContext(), "Successfully completed", Toast.LENGTH_SHORT)
+                    .show()
+            } else {
                 Toast.makeText(requireContext(), "Can't download uri", Toast.LENGTH_SHORT).show()
             }
         }

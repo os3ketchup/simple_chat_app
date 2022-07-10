@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_400sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<View
+    android:id="@+id/top_color"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintBottom_toTopOf="@id/bottom_color"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_150sdp"
+    android:background="@color/medium_military"/>
+    <View
+        android:id="@+id/bottom_color"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_250sdp"
+        android:background="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/top_color"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/image"
+        android:src="@drawable/to_group"
+        app:shapeAppearance="@style/circular"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toBottomOf="@id/top_color"
+        app:layout_constraintLeft_toLeftOf="@id/top_color"
+        app:layout_constraintRight_toRightOf="@id/top_color"
+        app:layout_constraintBottom_toTopOf="@id/bottom_color"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_100sdp"/>
+
+
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_group"
+        app:layout_constraintTop_toBottomOf="@id/top_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_margin="@dimen/_32sdp"
+        android:elevation="@dimen/_4sdp"
+        app:cardCornerRadius="@dimen/_8sdp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#e9ecef"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_group"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:autofillHints="123456"
+                android:background="#e9ecef"
+                android:ems="6"
+                android:fontFamily="@font/gothic_a1_medium"
+                android:gravity="center"
+                android:hint="@string/group_name"
+                android:inputType="text"
+                android:maxLength="12"
+                android:maxLines="1"
+                android:textColor="@color/dark_military"
+                android:textColorHint="#ced4da"
+                android:textSize="@dimen/_24ssp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+    <Button
+        android:id="@+id/btn_dismiss"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_36sdp"
+        android:text="Cancel"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cv_group"
+        app:layout_constraintRight_toLeftOf="@id/btn_accept"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+    <Button
+        android:id="@+id/btn_accept"
+        android:text="Accept"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_36sdp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cv_group"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/btn_dismiss"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -22,6 +22,7 @@
             <com.google.android.material.appbar.AppBarLayout
                 android:id="@+id/app_bar"
                 style="@style/Widget.MaterialComponents.AppBarLayout.PrimarySurface"
+                android:background="@color/medium_military"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fitsSystemWindows="true"
@@ -33,6 +34,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     android:background="@android:color/transparent"
+                    app:menu="@menu/menu_search"
                     android:elevation="0dp"
                     app:navigationIcon="@drawable/ic_menu">
 

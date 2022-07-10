@@ -17,8 +17,8 @@
     <style name="Only.Light" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!--<item name="android:windowTranslucentStatus">true</item>-->
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#4c956c</item>
-        <item name="colorPrimaryVariant">#2c6e49</item>
+        <item name="colorPrimary">@color/medium_military</item>
+        <item name="colorPrimaryVariant">@color/dark_military</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">#4a4e69</item>

@@ -29,7 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-thin"
-                android:text="Settings"
+                android:text="@string/group_name"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_18ssp"
                 android:textStyle="bold" />
@@ -46,11 +46,12 @@
             android:id="@+id/iv_profile"
             app:shapeAppearanceOverlay="@style/circular"
             android:scaleType="centerCrop"
-            android:background="@drawable/user_add"
+            android:src="@drawable/to_group"
+            android:background="@drawable/to_group"
             android:layout_width="@dimen/_150sdp"
             android:layout_height="@dimen/_150sdp"
-            android:importantForAccessibility="no"
-            android:src="@drawable/user_add" />
+
+             />
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -75,7 +76,7 @@
                     android:ems="6"
                     android:fontFamily="@font/gothic_a1_medium"
                     android:gravity="center"
-                    android:hint="@string/first_name"
+                    android:hint="@string/group_name"
                     android:inputType="text"
                     android:maxLength="12"
                     android:maxLines="1"
@@ -85,38 +86,5 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_40sdp"
-            android:layout_marginStart="@dimen/_32sdp"
-            android:layout_marginEnd="@dimen/_32sdp"
-            android:elevation="@dimen/_4sdp"
-            app:cardCornerRadius="@dimen/_8sdp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#e9ecef"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/et_last_name"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:autofillHints="123456"
-                    android:background="#e9ecef"
-                    android:ems="6"
-                    android:fontFamily="@font/gothic_a1_medium"
-                    android:gravity="center"
-                    android:hint="@string/last_name"
-                    android:inputType="text"
-                    android:maxLength="12"
-                    android:maxLines="1"
-                    android:textColor="#1b4332"
-                    android:textColorHint="#ced4da"
-                    android:textSize="@dimen/_24ssp" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
     </LinearLayout>
 </LinearLayout>

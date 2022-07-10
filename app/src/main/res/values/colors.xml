@@ -7,4 +7,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="dark_military">#344e41</color>
+    <color name="medium_military">#3a5a40</color>
+    <color name="light_military">#588157</color>
+    <color name="surface_military">#a3b18a</color>
+    <color name="light_surface_military">#dad7cd</color>
 </resources>

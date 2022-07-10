@@ -61,7 +61,7 @@ class ChatFragment : Fragment() {
                         }
                     }
                 }
-                val userAdapter = UserAdapter(list,navController)
+                val userAdapter = UserAdapter(requireContext(),list,navController)
                 val layoutManager = LinearLayoutManager.VERTICAL
                 val dividerItemDecoration = DividerItemDecoration(
                     binding.rvChat.context,
