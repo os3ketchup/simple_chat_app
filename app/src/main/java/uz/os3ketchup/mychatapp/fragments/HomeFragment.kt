@@ -56,7 +56,7 @@ class HomeFragment : Fragment() {
     var incrementer = 0
     var uploaded = false
     lateinit var group: Group
-    var unique = false
+
 
 
     override fun onCreateView(
@@ -167,8 +167,6 @@ class HomeFragment : Fragment() {
                                         Toast.LENGTH_SHORT
                                     ).show()
                                 }
-
-
                             }
                             btnCancel.setOnClickListener {
                                 dialogBuilder.dismiss()

@@ -2,6 +2,7 @@ package uz.os3ketchup.mychatapp
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
@@ -21,6 +22,7 @@ import uz.os3ketchup.mychatapp.moduls.Constants.USER
 import uz.os3ketchup.mychatapp.moduls.MainViewModel
 import uz.os3ketchup.mychatapp.moduls.User
 
+
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     private lateinit var firebaseDatabase: FirebaseDatabase
@@ -32,6 +34,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+
+
+
+
+
+
 
         binding.topAppBar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
@@ -56,6 +66,11 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
+
+
+
+
+
         setLayout()
 
     }
@@ -84,11 +99,7 @@ class MainActivity : AppCompatActivity() {
                         tvName.text = user?.firstName + " " + user?.lastName
                         tvNumber.text = user?.phoneNumber
                         Glide.with(this@MainActivity).load(user?.imageLink).into(imageHeader)
-                        /*if (user?.imageLink!!.isNotEmpty()) {
-                            Glide.with(this@MainActivity).load(user.imageLink).into(imageHeader)
-                        } else {
-                            Toast.makeText(this@MainActivity, "empty", Toast.LENGTH_SHORT).show()
-                        }*/
+
                     }
                 }
             }
@@ -111,13 +122,13 @@ class MainActivity : AppCompatActivity() {
                     mAuth.signOut()
                     if (mAuth.currentUser == null) {
                         startActivity(Intent(this, LoginActivity::class.java))
-                        finish() // destroy login so user can't come back with back button
+                        finish()
                     }
                 }
             }
 
             menuItem.isChecked = true
-            /* binding.drawerLayout.close()*/
+
             true
         }
 

@@ -37,7 +37,7 @@ class VerifyFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        binding.progress.visibility = View.VISIBLE
 
         phoneNumber = "+" + arguments?.getString(PHONE_KEY)!!
         binding.tvPhoneNumber.text = phoneNumber
@@ -110,6 +110,7 @@ class VerifyFragment : Fragment() {
         }
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
+                    binding.progress.visibility = View.INVISIBLE
                     // Sign in success, update UI with the signed-in user's information
                     findNavController().navigate(R.id.profileFragment)
                     Toast.makeText(requireContext(), "  ${credential.smsCode}", Toast.LENGTH_SHORT)

@@ -34,7 +34,6 @@ const val REQUEST_CODE = 1
 class SettingsFragment : Fragment() {
     lateinit var binding: FragmentSettingsBinding
     private lateinit var viewModel: MainViewModel
-
     lateinit var fileUri: Uri
     lateinit var currentUID: String
     private var imageLink: String = ""
@@ -45,7 +44,6 @@ class SettingsFragment : Fragment() {
     private lateinit var storageReference: StorageReference
     lateinit var mAuth: FirebaseAuth
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -54,10 +52,8 @@ class SettingsFragment : Fragment() {
         // Inflate the layout for this fragment
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding.topAppBar.setNavigationOnClickListener {
             findNavController().popBackStack()
         }
@@ -66,7 +62,6 @@ class SettingsFragment : Fragment() {
         handlePhoto()
         confirmChanges()
     }
-
     private fun confirmChanges() {
         binding.topAppBar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
@@ -94,9 +89,6 @@ class SettingsFragment : Fragment() {
                         Toast.makeText(context, "First name shouldn't be empty!", Toast.LENGTH_SHORT).show()
                     }
 
-
-
-
                     true
                 }
                 R.id.item_photo_remove -> {
@@ -108,7 +100,6 @@ class SettingsFragment : Fragment() {
                 else -> {
                     false
                 }
-
             }
         }
     }
@@ -118,7 +109,6 @@ class SettingsFragment : Fragment() {
             selectImage()
         }
     }
-
     private fun selectImage() {
         val intent = Intent()
         intent.type = "image/*"
@@ -128,7 +118,6 @@ class SettingsFragment : Fragment() {
             REQUEST_CODE
         )
     }
-
     private fun setDefaultLayout() {
         firebaseDatabase = FirebaseDatabase.getInstance()
         mAuth = Firebase.auth
@@ -149,13 +138,10 @@ class SettingsFragment : Fragment() {
                             }catch (e:IllegalStateException){
                                 e.printStackTrace()
                             }
-
-
                         }
                     }
                 }
             }
-
             override fun onCancelled(error: DatabaseError) {
                 error.message
             }
@@ -200,7 +186,6 @@ class SettingsFragment : Fragment() {
             val downloadUrl = it.metadata?.reference?.downloadUrl
             downloadUrl?.addOnSuccessListener { imageUri ->
                 imageLink = imageUri.toString()
-                Toast.makeText(requireContext(), "$imageUri", Toast.LENGTH_SHORT).show()
             }
         }.addOnFailureListener {
             progressDialog.dismiss()

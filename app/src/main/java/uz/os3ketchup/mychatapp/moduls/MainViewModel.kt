@@ -8,6 +8,9 @@ class MainViewModel:ViewModel() {
 
 
 
+
+
+
     fun goSettings(){
         condition.value = "settings"
     }
